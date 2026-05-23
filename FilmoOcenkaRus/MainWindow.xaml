@@ -1,0 +1,117 @@
+﻿<Window x:Class="FilmoOcenkaRus.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FilmoOcenkaRus"
+        mc:Ignorable="d"
+        Title="FilmoOcenkaRus" Height="541" Width="1000
+        ">
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <GroupBox Grid.Column="0" Header="Список фильмов" Grid.Row="0">
+            <DataGrid 
+                ItemsSource="{Binding FilteredMovie}"
+                SelectedItem="{Binding selectedMovie}"
+                AutoGenerateColumns="True"/>
+        </GroupBox>
+        
+        <GroupBox Grid.Column="1" Header="Добавить новый фильм в коллекцию" Grid.Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Название фильма:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Margin="5px 2px"
+                         Text="{Binding NewTitle, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <Label Grid.Row="1" Grid.Column="0" Content="Год выпуска:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="5px 2px"
+                         Text="{Binding NewYear, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <Label Grid.Row="2" Grid.Column="0" Content="Режисер:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="5px 2px"
+                         Text="{Binding NewDirector, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <Label Grid.Row="3" Grid.Column="0" Content="Жанр:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="5px 2px"
+                         Text="{Binding NewGenre, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <Label Grid.Row="4" Grid.Column="0" Content="Рейтинг:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="4" Grid.Column="1" Margin="5px 2px"
+                         Text="{Binding NewRating, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <Button Grid.Row="5" Content="Добавить фильм в коллекцию" Margin="5px 2px"
+                        Command="{Binding addMovie}"/>
+                <Button Grid.Row="5" Grid.Column="1" Content="Удалить" Margin="5px 2px"
+                        Command="{Binding deleteMovie}"/>
+                <Button Grid.Row="6" Grid.Column="0" Content="Показать все" Margin="5px 2px"
+                        Command="{Binding showAllMovies}"/>
+                <Button Grid.Row="6" Grid.Column="1" Content="Экспорт в Exele" Margin="5px 2px"
+                        Command="{Binding exportToExele}"/>
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Grid.Column="0" Header="Поиск и сортировка" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Row="0" Grid.Column="0" Content="Выберите жанр:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Поиск по дате релиза с...по годы:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="Сортировка по рейтингу:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ComboBox Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center"
+                          ItemsSource="{Binding Genres}" 
+                          SelectedValue="{Binding SelectedGenre}"/>
+                <Button Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" Content="Применить фильтр" Margin="5px 2px" Padding="5px 2px" VerticalAlignment="Center"
+                        Command="{Binding applyGenreFilter}"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="5px 2px" VerticalAlignment="Center"
+                         Text="{Binding YearFrom}"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Margin="5px 2px" VerticalAlignment="Center"
+                         Text="{Binding YearTo}"/>
+                <Button Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="1" Content="Поиск по дате релиза" Margin="5px 2px" Padding="5px 2px" VerticalAlignment="Center"
+                        Command="{Binding searchByYear}"/>
+                <Button Grid.Row="4" Grid.Column="1" Content="По возрастанию" Margin="5px 2px" Padding="5px 2px" VerticalAlignment="Center"
+                        Command="{Binding sortToBigger}"/>
+                <Button Grid.Row="4" Grid.Column="2" Content="По убыванию" Margin="5px 2px" Padding="5px 2px" VerticalAlignment="Center"
+                        Command="{Binding sortToSmaller}"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="Список режисеров" Grid.Row="1">
+            <DataGrid ItemsSource="{Binding Directors}"
+                      AutoGenerateColumns="True"/>
+        </GroupBox>
+        <Grid Grid.Column="1"/>
+        <Grid Grid.Column="1"/>
+    </Grid>
+
+</Window>
