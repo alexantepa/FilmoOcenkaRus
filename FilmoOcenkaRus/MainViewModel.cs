@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Win32;
 
 namespace FilmoOcenkaRus
 {
@@ -58,7 +60,7 @@ namespace FilmoOcenkaRus
         public ICommand searchByYear { get; }
         public ICommand sortToBigger { get; }
         public ICommand sortToSmaller { get; }
-        public ICommand exportToExele { get; }
+        public ICommand exportToExcel { get; }
 
         public MainViewModel()
         {
@@ -69,6 +71,7 @@ namespace FilmoOcenkaRus
             searchByYear = new RelayCommand(SearchByYear);
             sortToBigger = new RelayCommand(() => SortByRating(true));
             sortToSmaller = new RelayCommand(() => SortByRating(false));
+            exportToExcel = new RelayCommand(ExportToExcel);
 
             LoadTestData();
         }
@@ -187,6 +190,30 @@ namespace FilmoOcenkaRus
             OnPropertyChanged(nameof(NewRating));
         }
 
+        public void ExportToExcel()
+        {
+            var saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Excel files (*.csv)|*.csv|All files (*.*)|*.*",
+                DefaultExt = "csv",
+                FileName = "movies.csv"
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                var sb = new StringBuilder();
+                // Заголовки
+                sb.AppendLine("Название;Жанр;Год;Режиссер;Рейтинг");
+                
+                // Данные всех фильмов
+                foreach (var movie in allMovies)
+                {
+                    sb.AppendLine($"{movie.title};{movie.genre};{movie.year};{movie.director};{movie.rating}");
+                }
+
+                File.WriteAllText(saveFileDialog.FileName, sb.ToString(), Encoding.UTF8);
+            }
+        }
         
         protected void OnPropertyChanged(string propertyName)
         {

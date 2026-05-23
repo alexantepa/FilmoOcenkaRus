@@ -65,8 +65,8 @@
                         Command="{Binding deleteMovie}"/>
                 <Button Grid.Row="6" Grid.Column="0" Content="Показать все" Margin="5px 2px"
                         Command="{Binding showAllMovies}"/>
-                <Button Grid.Row="6" Grid.Column="1" Content="Экспорт в Exele" Margin="5px 2px"
-                        Command="{Binding exportToExele}"/>
+                <Button Grid.Row="6" Grid.Column="1" Content="Экспорт в Excel" Margin="5px 2px"
+                        Command="{Binding exportToExcel}"/>
             </Grid>
         </GroupBox>
         
