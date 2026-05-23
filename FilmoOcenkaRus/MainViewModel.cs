@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using Microsoft.Win32;
 
 namespace FilmoOcenkaRus
@@ -75,6 +76,42 @@ namespace FilmoOcenkaRus
             }
         }
 
+        // Кисти для привязки в XAML
+        private Brush _backgroundBrush;
+        public Brush BackgroundBrush
+        {
+            get => _backgroundBrush;
+            set { _backgroundBrush = value; OnPropertyChanged(nameof(BackgroundBrush)); }
+        }
+
+        private Brush _foregroundBrush;
+        public Brush ForegroundBrush
+        {
+            get => _foregroundBrush;
+            set { _foregroundBrush = value; OnPropertyChanged(nameof(ForegroundBrush)); }
+        }
+
+        private Brush _controlBackgroundBrush;
+        public Brush ControlBackgroundBrush
+        {
+            get => _controlBackgroundBrush;
+            set { _controlBackgroundBrush = value; OnPropertyChanged(nameof(ControlBackgroundBrush)); }
+        }
+
+        private Brush _controlForegroundBrush;
+        public Brush ControlForegroundBrush
+        {
+            get => _controlForegroundBrush;
+            set { _controlForegroundBrush = value; OnPropertyChanged(nameof(ControlForegroundBrush)); }
+        }
+
+        private Brush _borderBrush;
+        public Brush BorderBrush
+        {
+            get => _borderBrush;
+            set { _borderBrush = value; OnPropertyChanged(nameof(BorderBrush)); }
+        }
+
         public MainViewModel()
         {
             addMovie = new RelayCommand(AddMovie);
@@ -86,6 +123,9 @@ namespace FilmoOcenkaRus
             sortToSmaller = new RelayCommand(() => SortByRating(false));
             exportToExcel = new RelayCommand(ExportToExcel);
             toggleTheme = new RelayCommand(ToggleTheme);
+
+            // Инициализация кистей светлой темой
+            SetLightTheme();
 
             LoadTestData();
         }
@@ -233,26 +273,32 @@ namespace FilmoOcenkaRus
         {
             IsDarkTheme = !IsDarkTheme;
             
-            var app = Application.Current;
-            if (app != null)
+            if (IsDarkTheme)
             {
-                if (IsDarkTheme)
-                {
-                    app.Resources["BackgroundBrush"] = app.TryFindResource("DarkBackgroundBrush");
-                    app.Resources["ForegroundBrush"] = app.TryFindResource("DarkForegroundBrush");
-                    app.Resources["ControlBackgroundBrush"] = app.TryFindResource("DarkControlBackgroundBrush");
-                    app.Resources["ControlForegroundBrush"] = app.TryFindResource("DarkControlForegroundBrush");
-                    app.Resources["BorderBrush"] = app.TryFindResource("DarkBorderBrush");
-                }
-                else
-                {
-                    app.Resources["BackgroundBrush"] = app.TryFindResource("BackgroundBrush");
-                    app.Resources["ForegroundBrush"] = app.TryFindResource("ForegroundBrush");
-                    app.Resources["ControlBackgroundBrush"] = app.TryFindResource("ControlBackgroundBrush");
-                    app.Resources["ControlForegroundBrush"] = app.TryFindResource("ControlForegroundBrush");
-                    app.Resources["BorderBrush"] = app.TryFindResource("BorderBrush");
-                }
+                SetDarkTheme();
             }
+            else
+            {
+                SetLightTheme();
+            }
+        }
+
+        private void SetLightTheme()
+        {
+            BackgroundBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            ForegroundBrush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            ControlBackgroundBrush = new SolidColorBrush(Color.FromRgb(240, 240, 240));
+            ControlForegroundBrush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            BorderBrush = new SolidColorBrush(Color.FromRgb(204, 204, 204));
+        }
+
+        private void SetDarkTheme()
+        {
+            BackgroundBrush = new SolidColorBrush(Color.FromRgb(30, 30, 30));
+            ForegroundBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            ControlBackgroundBrush = new SolidColorBrush(Color.FromRgb(45, 45, 45));
+            ControlForegroundBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            BorderBrush = new SolidColorBrush(Color.FromRgb(63, 63, 63));
         }
         
         protected void OnPropertyChanged(string propertyName)
