@@ -38,6 +38,11 @@
                     <Style TargetType="DataGridCell">
                         <Setter Property="Background" Value="{Binding ControlBackgroundBrush}"/>
                         <Setter Property="Foreground" Value="{Binding ControlForegroundBrush}"/>
+                        <Style.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="{Binding ControlForegroundBrush, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+                            </Style>
+                        </Style.Resources>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="{Binding BorderBrush}"/>
@@ -185,6 +190,11 @@
                     <Style TargetType="DataGridCell">
                         <Setter Property="Background" Value="{Binding ControlBackgroundBrush}"/>
                         <Setter Property="Foreground" Value="{Binding ControlForegroundBrush}"/>
+                        <Style.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="{Binding ControlForegroundBrush, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+                            </Style>
+                        </Style.Resources>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="{Binding BorderBrush}"/>
