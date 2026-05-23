@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FilmoOcenkaRus"
         mc:Ignorable="d"
-        Title="FilmoOcenkaRus" Height="541" Width="1000
-        ">
+        Title="FilmoOcenkaRus" Height="541" Width="1000"
+        Background="{DynamicResource BackgroundBrush}"
+        Foreground="{DynamicResource ForegroundBrush}">
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -21,11 +22,13 @@
             <DataGrid 
                 ItemsSource="{Binding FilteredMovie}"
                 SelectedItem="{Binding selectedMovie}"
-                AutoGenerateColumns="True"/>
+                AutoGenerateColumns="True"
+                Background="{DynamicResource ControlBackgroundBrush}"
+                Foreground="{DynamicResource ControlForegroundBrush}"/>
         </GroupBox>
         
         <GroupBox Grid.Column="1" Header="Добавить новый фильм в коллекцию" Grid.Row="0">
-            <Grid>
+            <Grid Background="{DynamicResource ControlBackgroundBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -76,13 +79,13 @@
                     <Button Grid.Row="0" Grid.Column="0" Content="Экспорт в Excel" Margin="5px 2px"
                             Command="{Binding exportToExcel}"/>
                     <Button Grid.Row="1" Grid.Column="1" Content="Сменить тему" Margin="5px 2px"
-                            Command="{}"/>
+                            Command="{Binding toggleTheme}"/>
                 </Grid>
             </Grid>
         </GroupBox>
         
         <GroupBox Grid.Column="0" Header="Поиск и сортировка" Grid.Row="1">
-            <Grid>
+            <Grid Background="{DynamicResource ControlBackgroundBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -119,7 +122,9 @@
         </GroupBox>
         <GroupBox Grid.Column="1" Header="Список режисеров" Grid.Row="1">
             <DataGrid ItemsSource="{Binding Directors}"
-                      AutoGenerateColumns="True"/>
+                      AutoGenerateColumns="True"
+                      Background="{DynamicResource ControlBackgroundBrush}"
+                      Foreground="{DynamicResource ControlForegroundBrush}"/>
         </GroupBox>
         <Grid Grid.Column="1"/>
         <Grid Grid.Column="1"/>
