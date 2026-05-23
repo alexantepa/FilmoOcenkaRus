@@ -28,11 +28,6 @@
                 Foreground="{Binding ControlForegroundBrush}"
                 RowBackground="{Binding ControlBackgroundBrush}"
                 AlternatingRowBackground="{Binding ControlBackgroundBrush}">
-                <DataGrid.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="Foreground" Value="{Binding ControlForegroundBrush, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
-                    </Style>
-                </DataGrid.Resources>
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="Background" Value="{Binding ControlBackgroundBrush}"/>
@@ -50,6 +45,11 @@
                         </Style.Triggers>
                     </Style>
                 </DataGrid.CellStyle>
+                <DataGrid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=DataContext.ControlForegroundBrush, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    </Style>
+                </DataGrid.Resources>
             </DataGrid>
         </GroupBox>
         
@@ -180,11 +180,6 @@
                       Foreground="{Binding ControlForegroundBrush}"
                       RowBackground="{Binding ControlBackgroundBrush}"
                       AlternatingRowBackground="{Binding ControlBackgroundBrush}">
-                <DataGrid.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="Foreground" Value="{Binding ControlForegroundBrush, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
-                    </Style>
-                </DataGrid.Resources>
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="Background" Value="{Binding ControlBackgroundBrush}"/>
@@ -202,6 +197,11 @@
                         </Style.Triggers>
                     </Style>
                 </DataGrid.CellStyle>
+                <DataGrid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{Binding Path=DataContext.ControlForegroundBrush, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    </Style>
+                </DataGrid.Resources>
             </DataGrid>
         </GroupBox>
         <Grid Grid.Column="1"/>
