@@ -1,4 +1,4 @@
-﻿<Window x:Class="FilmoOcenkaRus.MainWindow"
+<Window x:Class="FilmoOcenkaRus.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -65,8 +65,19 @@
                         Command="{Binding deleteMovie}"/>
                 <Button Grid.Row="6" Grid.Column="0" Content="Показать все" Margin="5px 2px"
                         Command="{Binding showAllMovies}"/>
-                <Button Grid.Row="6" Grid.Column="1" Content="Экспорт в Excel" Margin="5px 2px"
-                        Command="{Binding exportToExcel}"/>
+                <Grid Grid.Column="1" Grid.Row="6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Row="0" Grid.Column="0" Content="Экспорт в Excel" Margin="5px 2px"
+                            Command="{Binding exportToExcel}"/>
+                    <Button Grid.Row="1" Grid.Column="1" Content="Сменить тему" Margin="5px 2px"
+                            Command="{}"/>
+                </Grid>
             </Grid>
         </GroupBox>
         
