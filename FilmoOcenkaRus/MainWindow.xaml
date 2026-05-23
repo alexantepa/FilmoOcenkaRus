@@ -25,7 +25,27 @@
                 SelectedItem="{Binding selectedMovie}"
                 AutoGenerateColumns="True"
                 Background="{Binding ControlBackgroundBrush}"
-                Foreground="{Binding ControlForegroundBrush}"/>
+                Foreground="{Binding ControlForegroundBrush}"
+                RowBackground="{Binding ControlBackgroundBrush}"
+                AlternatingRowBackground="{Binding ControlBackgroundBrush}">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="{Binding ControlBackgroundBrush}"/>
+                        <Setter Property="Foreground" Value="{Binding ControlForegroundBrush}"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Background" Value="{Binding ControlBackgroundBrush}"/>
+                        <Setter Property="Foreground" Value="{Binding ControlForegroundBrush}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{Binding BorderBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
+            </DataGrid>
         </GroupBox>
         
         <GroupBox Grid.Column="1" Header="Добавить новый фильм в коллекцию" Grid.Row="0"
@@ -152,7 +172,27 @@
             <DataGrid ItemsSource="{Binding Directors}"
                       AutoGenerateColumns="True"
                       Background="{Binding ControlBackgroundBrush}"
-                      Foreground="{Binding ControlForegroundBrush}"/>
+                      Foreground="{Binding ControlForegroundBrush}"
+                      RowBackground="{Binding ControlBackgroundBrush}"
+                      AlternatingRowBackground="{Binding ControlBackgroundBrush}">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="{Binding ControlBackgroundBrush}"/>
+                        <Setter Property="Foreground" Value="{Binding ControlForegroundBrush}"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Background" Value="{Binding ControlBackgroundBrush}"/>
+                        <Setter Property="Foreground" Value="{Binding ControlForegroundBrush}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{Binding BorderBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
+            </DataGrid>
         </GroupBox>
         <Grid Grid.Column="1"/>
         <Grid Grid.Column="1"/>
