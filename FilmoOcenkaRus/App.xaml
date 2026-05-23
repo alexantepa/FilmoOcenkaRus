@@ -4,6 +4,18 @@
              xmlns:local="clr-namespace:FilmoOcenkaRus"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- Светлая тема (по умолчанию) -->
+        <SolidColorBrush x:Key="BackgroundBrush" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="ForegroundBrush" Color="#000000"/>
+        <SolidColorBrush x:Key="ControlBackgroundBrush" Color="#F0F0F0"/>
+        <SolidColorBrush x:Key="ControlForegroundBrush" Color="#000000"/>
+        <SolidColorBrush x:Key="BorderBrush" Color="#CCCCCC"/>
+        
+        <!-- Тёмная тема -->
+        <SolidColorBrush x:Key="DarkBackgroundBrush" Color="#1E1E1E"/>
+        <SolidColorBrush x:Key="DarkForegroundBrush" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="DarkControlBackgroundBrush" Color="#2D2D2D"/>
+        <SolidColorBrush x:Key="DarkControlForegroundBrush" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="DarkBorderBrush" Color="#3F3F3F"/>
     </Application.Resources>
 </Application>

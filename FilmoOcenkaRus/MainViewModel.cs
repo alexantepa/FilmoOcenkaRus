@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
 
@@ -61,6 +62,18 @@ namespace FilmoOcenkaRus
         public ICommand sortToBigger { get; }
         public ICommand sortToSmaller { get; }
         public ICommand exportToExcel { get; }
+        public ICommand toggleTheme { get; }
+
+        private bool _isDarkTheme = false;
+        public bool IsDarkTheme
+        {
+            get => _isDarkTheme;
+            set
+            {
+                _isDarkTheme = value;
+                OnPropertyChanged(nameof(IsDarkTheme));
+            }
+        }
 
         public MainViewModel()
         {
@@ -72,6 +85,7 @@ namespace FilmoOcenkaRus
             sortToBigger = new RelayCommand(() => SortByRating(true));
             sortToSmaller = new RelayCommand(() => SortByRating(false));
             exportToExcel = new RelayCommand(ExportToExcel);
+            toggleTheme = new RelayCommand(ToggleTheme);
 
             LoadTestData();
         }
@@ -212,6 +226,32 @@ namespace FilmoOcenkaRus
                 }
 
                 File.WriteAllText(saveFileDialog.FileName, sb.ToString(), Encoding.UTF8);
+            }
+        }
+
+        public void ToggleTheme()
+        {
+            IsDarkTheme = !IsDarkTheme;
+            
+            var app = Application.Current;
+            if (app != null)
+            {
+                if (IsDarkTheme)
+                {
+                    app.Resources["BackgroundBrush"] = app.TryFindResource("DarkBackgroundBrush");
+                    app.Resources["ForegroundBrush"] = app.TryFindResource("DarkForegroundBrush");
+                    app.Resources["ControlBackgroundBrush"] = app.TryFindResource("DarkControlBackgroundBrush");
+                    app.Resources["ControlForegroundBrush"] = app.TryFindResource("DarkControlForegroundBrush");
+                    app.Resources["BorderBrush"] = app.TryFindResource("DarkBorderBrush");
+                }
+                else
+                {
+                    app.Resources["BackgroundBrush"] = app.TryFindResource("BackgroundBrush");
+                    app.Resources["ForegroundBrush"] = app.TryFindResource("ForegroundBrush");
+                    app.Resources["ControlBackgroundBrush"] = app.TryFindResource("ControlBackgroundBrush");
+                    app.Resources["ControlForegroundBrush"] = app.TryFindResource("ControlForegroundBrush");
+                    app.Resources["BorderBrush"] = app.TryFindResource("BorderBrush");
+                }
             }
         }
         

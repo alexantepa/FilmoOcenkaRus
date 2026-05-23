@@ -1,75 +1,33 @@
 ```
-# Build artifacts
+# Compiled and build artifacts
+*.obj
 *.exe
 *.dll
 *.pdb
 *.userprefs
 *.cache
 *.compiled
-*.nupkg
-*.snk
-*.tmp
-*.log
-*.bak
-*.old
-*.orig
-*.rej
+**/Debug/
+**/Release/
+bin/
+obj/
 
 # Dependencies
 packages/
-bin/
-obj/
-lib/
-node_modules/
-bower_components/
-jspm_packages/
+*.nupkg
 
-# User-specific files
-.vs/
-*.user
-*.userosscache
-*.suo
-*.csproj.user
-*.vbproj.user
-*.fsproj.user
-*.userprefs
+# Logs and temp files
+*.log
+*.tmp
+*.temp
 
-# Environment specific settings
+# Environment
 .env
 .env.local
-.env.*
-!env.example
+*.env.*
 
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-desktop.ini
-
-# Testing
-TestResults/
-coverage/
-*.cover
-*.log
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Compiled files
-*.o
-*.obj
-*.a
-*.lib
-*.so
-*.dylib
-*.dll
-*.exe
-*.out
+# Editors
+.vs/
+.vshost.exe
+.user
 ```
