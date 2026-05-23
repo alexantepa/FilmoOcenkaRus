@@ -1,25 +1,22 @@
 ```
-# Compiled and build artifacts
-*.obj
+# Build artifacts
 *.exe
 *.dll
 *.pdb
-*.userprefs
-*.cache
-*.compiled
-**/Debug/
-**/Release/
-bin/
-obj/
+*.obj
+*.lib
+*.so
+*.dylib
+*.a
 
 # Dependencies
 packages/
-*.nupkg
+bin/
+obj/
+out/
 
-# Logs and temp files
+# Logs
 *.log
-*.tmp
-*.temp
 
 # Environment
 .env
@@ -27,7 +24,19 @@ packages/
 *.env.*
 
 # Editors
-.vs/
-.vshost.exe
-.user
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test and coverage
+coverage/
+htmlcov/
+*.coverage
+.coverage.*
+.nyc_output/
 ```

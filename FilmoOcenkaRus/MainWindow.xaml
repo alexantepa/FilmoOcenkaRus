@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:FilmoOcenkaRus"
         mc:Ignorable="d"
         Title="FilmoOcenkaRus" Height="541" Width="1000"
-        Background="{DynamicResource BackgroundBrush}"
-        Foreground="{DynamicResource ForegroundBrush}">
+        Background="{Binding BackgroundBrush}"
+        Foreground="{Binding ForegroundBrush}">
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -18,17 +18,19 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         
-        <GroupBox Grid.Column="0" Header="Список фильмов" Grid.Row="0">
+        <GroupBox Grid.Column="0" Header="Список фильмов" Grid.Row="0"
+                  BorderBrush="{Binding BorderBrush}">
             <DataGrid 
                 ItemsSource="{Binding FilteredMovie}"
                 SelectedItem="{Binding selectedMovie}"
                 AutoGenerateColumns="True"
-                Background="{DynamicResource ControlBackgroundBrush}"
-                Foreground="{DynamicResource ControlForegroundBrush}"/>
+                Background="{Binding ControlBackgroundBrush}"
+                Foreground="{Binding ControlForegroundBrush}"/>
         </GroupBox>
         
-        <GroupBox Grid.Column="1" Header="Добавить новый фильм в коллекцию" Grid.Row="0">
-            <Grid Background="{DynamicResource ControlBackgroundBrush}">
+        <GroupBox Grid.Column="1" Header="Добавить новый фильм в коллекцию" Grid.Row="0"
+                  BorderBrush="{Binding BorderBrush}">
+            <Grid Background="{Binding ControlBackgroundBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -42,25 +44,40 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Content="Название фильма:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="Название фильма:" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Foreground="{Binding ControlForegroundBrush}"/>
                 <TextBox Grid.Row="0" Grid.Column="1" Margin="5px 2px"
-                         Text="{Binding NewTitle, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding NewTitle, UpdateSourceTrigger=PropertyChanged}"
+                         Background="{Binding ControlBackgroundBrush}"
+                         Foreground="{Binding ControlForegroundBrush}"/>
                 
-                <Label Grid.Row="1" Grid.Column="0" Content="Год выпуска:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Год выпуска:" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Foreground="{Binding ControlForegroundBrush}"/>
                 <TextBox Grid.Row="1" Grid.Column="1" Margin="5px 2px"
-                         Text="{Binding NewYear, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding NewYear, UpdateSourceTrigger=PropertyChanged}"
+                         Background="{Binding ControlBackgroundBrush}"
+                         Foreground="{Binding ControlForegroundBrush}"/>
                 
-                <Label Grid.Row="2" Grid.Column="0" Content="Режисер:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Режисер:" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Foreground="{Binding ControlForegroundBrush}"/>
                 <TextBox Grid.Row="2" Grid.Column="1" Margin="5px 2px"
-                         Text="{Binding NewDirector, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding NewDirector, UpdateSourceTrigger=PropertyChanged}"
+                         Background="{Binding ControlBackgroundBrush}"
+                         Foreground="{Binding ControlForegroundBrush}"/>
                 
-                <Label Grid.Row="3" Grid.Column="0" Content="Жанр:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Жанр:" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Foreground="{Binding ControlForegroundBrush}"/>
                 <TextBox Grid.Row="3" Grid.Column="1" Margin="5px 2px"
-                         Text="{Binding NewGenre, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding NewGenre, UpdateSourceTrigger=PropertyChanged}"
+                         Background="{Binding ControlBackgroundBrush}"
+                         Foreground="{Binding ControlForegroundBrush}"/>
                 
-                <Label Grid.Row="4" Grid.Column="0" Content="Рейтинг:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="Рейтинг:" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Foreground="{Binding ControlForegroundBrush}"/>
                 <TextBox Grid.Row="4" Grid.Column="1" Margin="5px 2px"
-                         Text="{Binding NewRating, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding NewRating, UpdateSourceTrigger=PropertyChanged}"
+                         Background="{Binding ControlBackgroundBrush}"
+                         Foreground="{Binding ControlForegroundBrush}"/>
                 
                 <Button Grid.Row="5" Content="Добавить фильм в коллекцию" Margin="5px 2px"
                         Command="{Binding addMovie}"/>
@@ -78,14 +95,15 @@
                     </Grid.ColumnDefinitions>
                     <Button Grid.Row="0" Grid.Column="0" Content="Экспорт в Excel" Margin="5px 2px"
                             Command="{Binding exportToExcel}"/>
-                    <Button Grid.Row="1" Grid.Column="1" Content="Сменить тему" Margin="5px 2px"
+                    <Button Grid.Row="0" Grid.Column="1" Content="Сменить тему" Margin="5px 2px"
                             Command="{Binding toggleTheme}"/>
                 </Grid>
             </Grid>
         </GroupBox>
         
-        <GroupBox Grid.Column="0" Header="Поиск и сортировка" Grid.Row="1">
-            <Grid Background="{DynamicResource ControlBackgroundBrush}">
+        <GroupBox Grid.Column="0" Header="Поиск и сортировка" Grid.Row="1"
+                  BorderBrush="{Binding BorderBrush}">
+            <Grid Background="{Binding ControlBackgroundBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -99,18 +117,27 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 
-                <Label Grid.Row="0" Grid.Column="0" Content="Выберите жанр:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Row="2" Grid.Column="0" Content="Поиск по дате релиза с...по годы:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Row="4" Grid.Column="0" Content="Сортировка по рейтингу:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="Выберите жанр:" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Foreground="{Binding ControlForegroundBrush}"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Поиск по дате релиза с...по годы:" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Foreground="{Binding ControlForegroundBrush}"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="Сортировка по рейтингу:" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Foreground="{Binding ControlForegroundBrush}"/>
                 <ComboBox Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center"
                           ItemsSource="{Binding Genres}" 
-                          SelectedValue="{Binding SelectedGenre}"/>
+                          SelectedValue="{Binding SelectedGenre}"
+                          Background="{Binding ControlBackgroundBrush}"
+                          Foreground="{Binding ControlForegroundBrush}"/>
                 <Button Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" Content="Применить фильтр" Margin="5px 2px" Padding="5px 2px" VerticalAlignment="Center"
                         Command="{Binding applyGenreFilter}"/>
                 <TextBox Grid.Row="2" Grid.Column="1" Margin="5px 2px" VerticalAlignment="Center"
-                         Text="{Binding YearFrom}"/>
+                         Text="{Binding YearFrom}"
+                         Background="{Binding ControlBackgroundBrush}"
+                         Foreground="{Binding ControlForegroundBrush}"/>
                 <TextBox Grid.Row="2" Grid.Column="2" Margin="5px 2px" VerticalAlignment="Center"
-                         Text="{Binding YearTo}"/>
+                         Text="{Binding YearTo}"
+                         Background="{Binding ControlBackgroundBrush}"
+                         Foreground="{Binding ControlForegroundBrush}"/>
                 <Button Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="1" Content="Поиск по дате релиза" Margin="5px 2px" Padding="5px 2px" VerticalAlignment="Center"
                         Command="{Binding searchByYear}"/>
                 <Button Grid.Row="4" Grid.Column="1" Content="По возрастанию" Margin="5px 2px" Padding="5px 2px" VerticalAlignment="Center"
@@ -120,11 +147,12 @@
 
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Column="1" Header="Список режисеров" Grid.Row="1">
+        <GroupBox Grid.Column="1" Header="Список режисеров" Grid.Row="1"
+                  BorderBrush="{Binding BorderBrush}">
             <DataGrid ItemsSource="{Binding Directors}"
                       AutoGenerateColumns="True"
-                      Background="{DynamicResource ControlBackgroundBrush}"
-                      Foreground="{DynamicResource ControlForegroundBrush}"/>
+                      Background="{Binding ControlBackgroundBrush}"
+                      Foreground="{Binding ControlForegroundBrush}"/>
         </GroupBox>
         <Grid Grid.Column="1"/>
         <Grid Grid.Column="1"/>
