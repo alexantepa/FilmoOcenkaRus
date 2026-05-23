@@ -1,1 +1,58 @@
-Nothing should be ignored based on the provided file changes. The only modified file is 'FilmoOcenkaRus/MainWindow.xaml', which appears to be a source code file (XAML UI definition) and not a build artifact, dependency, or temporary file. Therefore, no additional entries are needed in the .gitignore file.
+```
+# Build artifacts
+bin/
+obj/
+Debug/
+Release/
+*.exe
+*.dll
+*.pdb
+*.userprefs
+
+# Dependencies
+packages/
+
+# Logs
+*.log
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# Visual Studio
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opendb
+*.svclog
+ipch/
+*.VC.db
+*.VC.VC.opendb
+
+# Visual Studio Code
+.vscode/
+
+# Windows
+$RECYCLE.BIN/
+Desktop.ini
+Thumbs.db
+ehthumbs.db
+Icon?
+```
